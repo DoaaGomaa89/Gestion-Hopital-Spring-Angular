@@ -1,1 +1,3 @@
-# Spring-Backend
+# Système de Gestion d'Hôpital - Backend
+
+Ce projet est une application backend développée avec Spring Boot, conçue pour gérer les relations dans un environnement hospitalier. Il modélise les interactions et le flux de données entre des entités telles que les hôpitaux, les médecins et les patients, fournissant une API pour traiter efficacement des relations complexes. Le backend utilise JPA pour la gestion des entités et prend en charge les opérations CRUD pour chaque entité, permettant l'attribution de médecins à des hôpitaux et de patients à des médecins. L'application est sécurisée avec un accès basé sur les rôles et est optimisée pour l'intégration avec des applications frontales ou d'autres systèmes nécessitant des données sur les patients et les médecins.
