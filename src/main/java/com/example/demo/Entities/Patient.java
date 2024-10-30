@@ -1,4 +1,5 @@
 package com.example.demo.Entities;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.*;
 import java.util.Date;
@@ -13,6 +14,10 @@ public class Patient {
     private Date dateNaissane;
     private boolean malade;
     private int score;
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
+    @JsonBackReference
+    private Doctor doctor;
 
     public Patient() {}
     public Patient(String nom, Date dateNaissane, boolean malade, int score) {
@@ -33,6 +38,14 @@ public class Patient {
     public void setMalade(boolean malade) {this.malade = malade;}
     public int getScore() {return score;}
     public void setScore(int score) {this.score = score;}
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
 
     @Override
     public String toString() {

@@ -33,7 +33,6 @@ public class PatientService {
 
     public void deletePatientById(Long id) {
          patientRepository.deleteById(id);
-        System.out.println("Deleted Patient by Success");
     }
 
     public Patient updatePatientById(Long id,Patient patient) {
