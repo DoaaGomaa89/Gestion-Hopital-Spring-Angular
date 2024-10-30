@@ -1,5 +1,7 @@
 package com.example.demo.Entities;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import java.util.*;
 
 @Entity
 public class Hospital {
@@ -11,6 +13,9 @@ public class Hospital {
     private String name;
     private String location;
     private int capacity;
+    @OneToMany(mappedBy = "hospital")
+    @JsonManagedReference
+    private List<Doctor> doctors;
 
     // Constructors
     public Hospital() {}
@@ -52,6 +57,14 @@ public class Hospital {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    public List<Doctor> getDoctors() {
+        return doctors;
+    }
+
+    public void setDoctors(List<Doctor> doctors) {
+        this.doctors = doctors;
     }
 
     @Override

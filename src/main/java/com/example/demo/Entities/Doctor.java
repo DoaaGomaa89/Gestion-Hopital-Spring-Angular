@@ -1,5 +1,6 @@
 package com.example.demo.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -21,6 +22,11 @@ public class Doctor {
     @JsonManagedReference
     private List<Patient> patients;
 
+    @ManyToOne
+    @JoinColumn(name = "hospital_id")
+    @JsonBackReference
+    private Hospital hospital;
+
     public Doctor() {}
     public Doctor(String nom, Date dateNaissane) {
         this.nom = nom;
@@ -38,6 +44,8 @@ public class Doctor {
     public void setSpecialite(String specialite) {this.specialite = specialite;}
     public List<Patient> getPatients() {return patients;}
     public void setPatients(List<Patient> patients) {this.patients = patients;}
+    public Hospital getHospital() {return hospital;}
+    public void setHospital(Hospital hospital) {this.hospital = hospital;}
 
     @Override
     public String toString() {

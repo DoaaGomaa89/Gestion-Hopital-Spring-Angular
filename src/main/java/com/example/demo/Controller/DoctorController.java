@@ -1,8 +1,12 @@
 package com.example.demo.Controller;
 
+import com.example.demo.DTO.DoctorRequest;
 import com.example.demo.Entities.Doctor;
+import com.example.demo.Entities.Hospital;
 import com.example.demo.Entities.Patient;
 import com.example.demo.Service.DoctorService;
+import com.example.demo.Service.HospitalService;
+import com.example.demo.Service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -13,14 +17,25 @@ import java.util.List;
 @RequestMapping("/doctors")
 public class DoctorController {
     private final DoctorService doctorService;
+    private final HospitalService hospitalService;
+    //private final PatientService patientService;
     @Autowired
-    public DoctorController(DoctorService doctorService) {this.doctorService = doctorService;}
+    public DoctorController(DoctorService doctorService,HospitalService hospitalService ) {
+        this.doctorService = doctorService;
+        this.hospitalService=hospitalService;
+    }
 
     // Endpoint to add a new patient (accessible to ADMIN role)
     @PostMapping("/add")
     @PreAuthorize("hasRole('ADMIN')")
-    public Doctor addDoctor(@RequestBody Doctor doctor) {
-        return doctorService.addDoctor(doctor);
+    public Doctor addDoctor(@RequestBody DoctorRequest doctor) {
+        Hospital hospital = hospitalService.getHospitalById(doctor.getHospitalId());
+        Doctor doctor1 = new Doctor();
+        doctor1.setNom(doctor.getNom());
+        doctor1.setSpecialite(doctor.getSpecialite());
+        doctor1.setDateNaissane(doctor.getDateNaissane());
+        doctor1.setHospital(hospital);
+        return doctorService.addDoctor(doctor1);
     }
     // Endpoint to get all patients (accessible to USER and ADMIN roles)
     @GetMapping("/showall")
