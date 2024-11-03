@@ -46,6 +46,7 @@ public class AppointmentController {
         return appointmentService.getAppointmentById(id);
     }
 
+    //Update an existing Appointment
     @PutMapping("/update/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public Appointment updateAppointment(@RequestBody AppointmentRequest appointment ,@PathVariable Long id) {
