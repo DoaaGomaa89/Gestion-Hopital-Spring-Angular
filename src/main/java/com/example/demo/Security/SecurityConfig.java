@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // CSRF protection for production can be configured here
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/patients/showall").hasRole("USER")
-                        .requestMatchers("/patients/delete/**", "/patients/update/**").hasRole("ADMIN")
+                        .requestMatchers("/patients/delete/**", "/patients/update/**","/Appointment").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .httpBasic(withDefaults()); // enables basic authentication

@@ -1,8 +1,10 @@
 package com.example.demo.Entities;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Patient {
@@ -18,6 +20,9 @@ public class Patient {
     @JoinColumn(name = "doctor_id")
     @JsonBackReference
     private Doctor doctor;
+    @OneToMany(mappedBy = "patient")
+    @JsonManagedReference
+    private List<Appointment> appointments;
 
     public Patient() {}
     public Patient(String nom, Date dateNaissane, boolean malade, int score) {
