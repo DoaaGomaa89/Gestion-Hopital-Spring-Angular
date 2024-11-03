@@ -14,6 +14,47 @@ Welcome to the **Hospital Management Backend Application**—an advanced, secure
 
 ---
 
+## 🚀 Getting Started
+
+1. **Clone the Repository**: Clone this repository to your local machine.
+   ```bash
+   git clone https://github.com/aminebkk/hospital-management-backend.git
+
+## 🛠️ Project Structure
+
+- **Controllers**: Manages API requests and responses for each entity.
+- **Services**: Contains business logic for handling operations.
+- **Repositories**: Uses JPA repositories for database interactions.
+- **Security Configuration**: Role-based security implemented with **JWT** and **Keycloak** for endpoint protection.
+
+---
+
+## 📚 API Documentation
+
+The API is designed with REST principles and supports all CRUD operations on entities such as **Hospitals**, **Doctors**, **Patients**, and **Appointments**. See the **API documentation** for details on endpoints, parameters, and JSON response structures.
+
+---
+
+## 🔧 Technologies Used
+
+- **Spring Boot**
+- **Spring Security** with OAuth2 and Keycloak integration
+- **JPA / Hibernate** for ORM
+- **MySQL** database
+- **JWT** for token-based authentication
+
+---
+
+## 🤝 Contributions
+
+Contributions are encouraged! If you'd like to contribute:
+
+1. **Fork** the repository.
+2. **Create a new branch** for your feature.
+3. **Submit a pull request**.
+
+
+
 ## 📖 JSON Response Example
 
 The following JSON illustrates the nested structure for retrieving hospitals, complete with doctors, patients, and appointments. This structure is ideal for frontends needing complex healthcare data:
@@ -89,45 +130,3 @@ The following JSON illustrates the nested structure for retrieving hospitals, co
         ]
     }
 ]
-
-## 🚀 Getting Started
-
-1. **Clone the Repository**: Clone this repository to your local machine.
-   ```bash
-   git clone https://github.com/aminebkk/hospital-management-backend.git
-
-## 🛠️ Project Structure
-
-- **Controllers**: Manages API requests and responses for each entity.
-- **Services**: Contains business logic for handling operations.
-- **Repositories**: Uses JPA repositories for database interactions.
-- **Security Configuration**: Role-based security implemented with **JWT** and **Keycloak** for endpoint protection.
-
----
-
-## 📚 API Documentation
-
-The API is designed with REST principles and supports all CRUD operations on entities such as **Hospitals**, **Doctors**, **Patients**, and **Appointments**. See the **API documentation** for details on endpoints, parameters, and JSON response structures.
-
----
-
-## 🔧 Technologies Used
-
-- **Spring Boot**
-- **Spring Security** with OAuth2 and Keycloak integration
-- **JPA / Hibernate** for ORM
-- **MySQL** database
-- **JWT** for token-based authentication
-
----
-
-## 🤝 Contributions
-
-Contributions are encouraged! If you'd like to contribute:
-
-1. **Fork** the repository.
-2. **Create a new branch** for your feature.
-3. **Submit a pull request**.
-
-
-
