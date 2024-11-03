@@ -45,4 +45,16 @@ public class AppointmentController {
     public Appointment getAppointmentById(@PathVariable Long id) {
         return appointmentService.getAppointmentById(id);
     }
+
+    @PutMapping("/update/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public Appointment updateAppointment(@RequestBody AppointmentRequest appointment ,@PathVariable Long id) {
+        Patient p =  patientService.getPatientbyId(appointment.getPatientId());
+        Appointment appointment1 = appointmentService.getAppointmentById(id);
+        appointment1.setDate(appointment.getDate());
+        appointment1.setDescription(appointment.getDescription());
+        appointment1.setTitle(appointment.getTitle());
+        appointment1.setPatient(p);
+        return appointmentService.updateAppointment(appointment1);
+    }
 }
