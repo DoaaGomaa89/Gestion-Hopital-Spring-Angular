@@ -10,14 +10,15 @@ import {LoginComponent} from './login/login.component';
 import {AdminTemplateComponent} from './admin-template/admin-template.component';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'admin', component: AdminTemplateComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'hospital', component: HospitalComponent},
-  {path: 'doctor', component: DoctorComponent},
-  {path: 'patient', component: PatientComponent},
-  {path: 'appointment', component: AppointmentComponent},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'admin', component: AdminTemplateComponent, children : [
+      {path: 'home', component: HomeComponent},
+      {path: 'hospital', component: HospitalComponent},
+      {path: 'doctor', component: DoctorComponent},
+      {path: 'patient', component: PatientComponent},
+      {path: 'appointment', component: AppointmentComponent},
+      {path: 'dashboard', component: DashboardComponent},
+    ]},
 ];
 
 @NgModule({

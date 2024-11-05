@@ -3,43 +3,48 @@
     <mat-icon>menu</mat-icon>
   </button>
   <span style="flex: 1"></span>
-  <button mat-button routerLink="/home">Home</button>
-  <button mat-button routerLink="/hospital">Hospitals</button>
+  <button mat-button routerLink="/admin/home">Home</button>
+  <button mat-button routerLink="/admin/hospital">Hospitals</button>
   <button mat-button [matMenuTriggerFor]="DoctorMenu">
     Doctors
     <mat-icon>keyboard_arrow_down</mat-icon>
   </button>
   <mat-menu #DoctorMenu>
-    <button mat-menu-item routerLink="/doctor">Load Doctors</button>
-    <button mat-menu-item routerLink="/patient">Load Patients</button>
-    <button mat-menu-item routerLink="/appointment">Load Appointment</button>
+    <button mat-menu-item routerLink="/admin/doctor">Load Doctors</button>
+    <button mat-menu-item routerLink="/admin/patient">Load Patients</button>
+    <button mat-menu-item routerLink="/admin/appointment">Load Appointment</button>
   </mat-menu>
-  <button mat-raised-button routerLink="/login" color="warn" style="margin-left: 15px;">Logout</button>
+  <button mat-button *ngIf="authService.isAuthenticated">
+  {{authService.username}}
+  </button>
+  <button mat-raised-button routerLink="/login" color="warn" style="margin-left: 15px;" (click)="logout()">
+    Logout
+  </button>
 </mat-toolbar>
 
 <mat-drawer-container class="app-container" style="height: 100vh;">
   <mat-drawer #MyDrawer opened="true" mode="side" position="start" class="app-sidenav">
     <mat-list>
       <mat-list-item>
-        <button mat-button routerLink="/dashboard">
+        <button mat-button routerLink="/admin/dashboard">
           <mat-icon>dashboard</mat-icon>
           <span class="nav-text">Dashboard</span>
         </button>
       </mat-list-item>
       <mat-list-item>
-        <button mat-button routerLink="/hospital">
+        <button mat-button routerLink="/admin/hospital">
           <mat-icon>local_hospital</mat-icon>
           <span class="nav-text">Hospitals</span>
         </button>
       </mat-list-item>
       <mat-list-item>
-        <button mat-button routerLink="/doctor">
+        <button mat-button routerLink="/admin/doctor">
           <mat-icon>how_to_reg</mat-icon>
           <span class="nav-text">Doctors</span>
         </button>
       </mat-list-item>
       <mat-list-item>
-        <button mat-button routerLink="/patient">
+        <button mat-button routerLink="/admin/patient">
           <mat-icon>person_pin</mat-icon>
           <span class="nav-text">Patients</span>
         </button>

@@ -31,9 +31,6 @@ export class LoginComponent implements OnInit {
 
     if (auth) {
       this.router.navigateByUrl("/admin");
-    } else {
-      console.error("Authentication failed");
-      // Optionally show a message to the user
     }
   }
 }
