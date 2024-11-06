@@ -26,7 +26,7 @@ public class PatientController {
 
     // Endpoint to add a new patient (accessible to ADMIN role)
     @PostMapping("/add")
-    @PreAuthorize("hasRole('ADMIN')")
+   // @PreAuthorize("hasRole('ADMIN')")
     public Patient addPatient(@RequestBody PatientRequest patientRequest) {
         // Retrieve the doctor by ID from the request
         Doctor doctor = doctorService.getDoctorbyId(patientRequest.getDoctorId());
@@ -44,25 +44,25 @@ public class PatientController {
 
     // Other methods remain unchanged
     @GetMapping("/showall")
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+   // @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public List<Patient> getAllPatients() {
         return patientService.showall();
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+   // @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public Patient getPatientById(@PathVariable Long id) {
         return patientService.getPatientbyId(id);
     }
 
     @DeleteMapping("/delete/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+   // @PreAuthorize("hasRole('ADMIN')")
     public void deletePatientById(@PathVariable Long id) {
         patientService.deletePatientById(id);
     }
 
     @PutMapping("/update/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+   //  @PreAuthorize("hasRole('ADMIN')")
     public Patient updatePatientById(@PathVariable Long id, @RequestBody Patient patient) {
         return patientService.updatePatientById(id, patient);
     }

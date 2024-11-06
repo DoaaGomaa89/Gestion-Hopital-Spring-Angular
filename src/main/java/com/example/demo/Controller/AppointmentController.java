@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Appointment")
+@RequestMapping("/appointments")
 public class AppointmentController {
     private final AppointmentService appointmentService;
     private final PatientService patientService;
@@ -22,7 +22,7 @@ public class AppointmentController {
         this.patientService = patientService;
     }
     @PostMapping("/add")
-    @PreAuthorize("hasRole('ADMIN')")
+   // @PreAuthorize("hasRole('ADMIN')")
     public Appointment addAppointment(@RequestBody AppointmentRequest appointment) {
         Patient p =  patientService.getPatientbyId(appointment.getPatientId());
         // Create a new Appointment object and set its properties
@@ -35,20 +35,20 @@ public class AppointmentController {
     }
 
     @GetMapping("/all")
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     public List<Appointment> getAllAppointments() {
         return appointmentService.getAllAppointments();
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+   // @PreAuthorize("hasRole('ADMIN')")
     public Appointment getAppointmentById(@PathVariable Long id) {
         return appointmentService.getAppointmentById(id);
     }
 
     //Update an existing Appointment
     @PutMapping("/update/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     public Appointment updateAppointment(@RequestBody AppointmentRequest appointment ,@PathVariable Long id) {
         Patient p =  patientService.getPatientbyId(appointment.getPatientId());
         Appointment appointment1 = appointmentService.getAppointmentById(id);
