@@ -5,15 +5,33 @@
   <span style="flex: 1"></span>
   <button mat-button routerLink="/admin/home">Home</button>
   <button mat-button routerLink="/admin/hospital">Hospitals</button>
-  <button mat-button [matMenuTriggerFor]="DoctorMenu">
+  <button *ngIf="authService.roles.includes('ADMIN')" mat-button [matMenuTriggerFor]="AdminMenu">
     Doctors
     <mat-icon>keyboard_arrow_down</mat-icon>
   </button>
-  <mat-menu #DoctorMenu>
+  <mat-menu #AdminMenu>
     <button mat-menu-item routerLink="/admin/doctor">Load Doctors</button>
     <button mat-menu-item routerLink="/admin/patient">Load Patients</button>
     <button mat-menu-item routerLink="/admin/appointment">Load Appointment</button>
   </mat-menu>
+
+  <button *ngIf="authService.roles.includes('DOCTOR')" mat-button [matMenuTriggerFor]="DoctorMenu">
+    Doctors
+    <mat-icon>keyboard_arrow_down</mat-icon>
+  </button>
+  <mat-menu #DoctorMenu>
+    <button mat-menu-item routerLink="/admin/patient">Load Patients</button>
+    <button mat-menu-item routerLink="/admin/appointment">Load Appointment</button>
+  </mat-menu>
+
+  <button *ngIf="authService.roles.includes('PATIENT')" mat-button [matMenuTriggerFor]="PatientMenu">
+    Appointments
+    <mat-icon>keyboard_arrow_down</mat-icon>
+  </button>
+  <mat-menu #PatientMenu>
+    <button mat-menu-item routerLink="/admin/appointment">Load Appointment</button>
+  </mat-menu>
+
   <button mat-button *ngIf="authService.isAuthenticated">
   {{authService.username}}
   </button>

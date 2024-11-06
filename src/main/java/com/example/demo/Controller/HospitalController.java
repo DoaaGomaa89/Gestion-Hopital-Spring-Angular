@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/hospitals")
 public class HospitalController {
     private final HospitalService hospitalService;
@@ -17,7 +18,7 @@ public class HospitalController {
     public Hospital addnew(@RequestBody Hospital hospital){
         return hospitalService.AddHospital(hospital);
     }
-    @GetMapping("/showall")
+    @GetMapping("")
     public List<Hospital> getAll(){
         return hospitalService.getAllHospitals();
     }

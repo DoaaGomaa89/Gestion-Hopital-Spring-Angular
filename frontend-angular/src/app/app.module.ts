@@ -24,6 +24,10 @@ import {MatDivider, MatDividerModule} from '@angular/material/divider';
 import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
 import {MatInput, MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from '@angular/forms';
+import {AuthGuard} from './guard/auth.guard';
+import {AuthorisationGuard} from './guard/authorisation.guard';
+import {HttpClientModule} from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -58,9 +62,12 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    MatTableModule,
+
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),AuthGuard,AuthorisationGuard
   ],
   bootstrap: [AppComponent]
 })

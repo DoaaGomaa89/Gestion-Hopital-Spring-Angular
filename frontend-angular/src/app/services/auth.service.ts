@@ -8,7 +8,8 @@ import {Router} from '@angular/router';
 export class AuthService {
   public users:any = {
     admin : {password:'1234' , roles : ['HOSPITAL','ADMIN']},
-    user1 : {password:'1234' , roles : ['DOCTOR']},
+    doctor : {password:'12345' , roles : ['DOCTOR']},
+    patient : {password:'123456' , roles : ['PATIENT']},
   }
 
   public username: any;
