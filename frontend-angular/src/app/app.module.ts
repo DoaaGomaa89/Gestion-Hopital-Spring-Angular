@@ -28,6 +28,7 @@ import {AuthGuard} from './guard/auth.guard';
 import {AuthorisationGuard} from './guard/authorisation.guard';
 import {HttpClientModule} from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -64,6 +65,7 @@ import {MatTableModule} from '@angular/material/table';
     ReactiveFormsModule,
     HttpClientModule,
     MatTableModule,
+    MatPaginatorModule,
 
   ],
   providers: [

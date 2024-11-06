@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-doctor',
@@ -12,6 +13,7 @@ export class DoctorComponent implements OnInit {
   public doctors : any;
   public dataSource: any;
   public displayedColumns:string[] = ['id','nom','dateNaissane','specialite'];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private http: HttpClient) {
   }
   ngOnInit(){
@@ -20,6 +22,7 @@ export class DoctorComponent implements OnInit {
         next:data => {
           this.doctors = data;
           this.dataSource = new MatTableDataSource(this.doctors);
+          this.dataSource.paginator = this.paginator;
         },
         error : err => {
           console.log(err);
