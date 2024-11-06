@@ -1,13 +1,39 @@
-<div class="container" >
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        Patient
-      </mat-card-title>
-    </mat-card-header>
-    <mat-divider></mat-divider>
-    <mat-card-content>
-      Patient
-    </mat-card-content>
-  </mat-card>
-</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="nom">
+    <th mat-header-cell *matHeaderCellDef> nom </th>
+    <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="dateNaissane">
+    <th mat-header-cell *matHeaderCellDef> Date de Naissance </th>
+    <td mat-cell *matCellDef="let element"> {{element.dateNaissane}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="malade">
+    <th mat-header-cell *matHeaderCellDef> Malade </th>
+    <td mat-cell *matCellDef="let element"> {{element.malade}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="score">
+    <th mat-header-cell *matHeaderCellDef> Score </th>
+    <td mat-cell *matCellDef="let element"> {{element.score}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/appointments")
+@CrossOrigin("*")
 public class AppointmentController {
     private final AppointmentService appointmentService;
     private final PatientService patientService;
@@ -34,7 +35,7 @@ public class AppointmentController {
         return appointmentService.addAppointment(appointment1);
     }
 
-    @GetMapping("/all")
+    @GetMapping("")
     //@PreAuthorize("hasRole('ADMIN')")
     public List<Appointment> getAllAppointments() {
         return appointmentService.getAllAppointments();

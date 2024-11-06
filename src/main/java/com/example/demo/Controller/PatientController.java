@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/patients")
+@CrossOrigin("*")
 public class PatientController {
 
     private final PatientService patientService;
@@ -43,7 +44,7 @@ public class PatientController {
     }
 
     // Other methods remain unchanged
-    @GetMapping("/showall")
+    @GetMapping("")
    // @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public List<Patient> getAllPatients() {
         return patientService.showall();

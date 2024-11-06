@@ -25,10 +25,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // CSRF protection for production can be configured here
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/hospitals").permitAll()
-                        .requestMatchers("/doctors").permitAll()
-                        .requestMatchers("/patients").permitAll()
-                        .requestMatchers("/appointments").permitAll()
+                        .requestMatchers("/hospitals","/doctors","/patients","/appointments").permitAll()
                         // i'll remove the security config to show the data on the tables in the frontend
                         // .requestMatchers("/patients/showall").hasRole("USER")
                         // .requestMatchers("/patients/delete/**", "/patients/update/**","/Appointment").hasRole("ADMIN")

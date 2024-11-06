@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/doctors")
+@CrossOrigin("*")
 public class DoctorController {
     private final DoctorService doctorService;
     private final HospitalService hospitalService;
@@ -38,7 +39,7 @@ public class DoctorController {
         return doctorService.addDoctor(doctor1);
     }
     // Endpoint to get all patients (accessible to USER and ADMIN roles)
-    @GetMapping("/showall")
+    @GetMapping("")
     //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public List<Doctor> getAllDoctors() {
         return doctorService.showall();
