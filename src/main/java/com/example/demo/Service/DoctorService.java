@@ -42,4 +42,8 @@ public class DoctorService {
         doctorRepository.save(d);
         return d;
     }
+
+    public List<Doctor> listAllDoctorByHospitalId(Long hospitalId) {
+        return doctorRepository.findDoctorsByHospitalId(hospitalId);
+    }
 }

@@ -43,4 +43,8 @@ public class PatientService {
         p.setScore(patient.getScore());
         return patientRepository.save(p);
     }
+
+    public List<Patient> getAllPatientsByDoctorId(Long doctorId){
+        return patientRepository.getAllThePatientsByDoctorId(doctorId);
+    }
 }

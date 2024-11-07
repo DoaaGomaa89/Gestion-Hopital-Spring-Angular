@@ -19,11 +19,12 @@ import java.util.List;
 public class DoctorController {
     private final DoctorService doctorService;
     private final HospitalService hospitalService;
-    //private final PatientService patientService;
+    private final PatientService patientService;
     @Autowired
-    public DoctorController(DoctorService doctorService,HospitalService hospitalService ) {
+    public DoctorController(DoctorService doctorService,HospitalService hospitalService, PatientService patientService ) {
         this.doctorService = doctorService;
         this.hospitalService=hospitalService;
+        this.patientService=patientService;
     }
 
     // Endpoint to add a new patient (accessible to ADMIN role)
@@ -64,5 +65,10 @@ public class DoctorController {
    // @PreAuthorize("hasRole('ADMIN')")
     public Doctor updateDoctorById(@PathVariable Long id, @RequestBody Doctor doctor) {
         return doctorService.updateDoctorById(id, doctor);
+    }
+    // Get all the patients by a doctor-id
+    @GetMapping("/{id}/patients")
+    public List<Patient> getAllThePatientsByDoctorId(@PathVariable Long id) {
+        return patientService.getAllPatientsByDoctorId(id);
     }
 }
