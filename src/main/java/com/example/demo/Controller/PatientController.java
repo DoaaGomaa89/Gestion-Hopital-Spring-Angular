@@ -1,7 +1,9 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Entities.Appointment;
 import com.example.demo.Entities.Patient;
 import com.example.demo.Entities.Doctor;
+import com.example.demo.Service.AppointmentService;
 import com.example.demo.Service.PatientService;
 import com.example.demo.Service.DoctorService;
 import com.example.demo.DTO.PatientRequest;
@@ -18,9 +20,11 @@ public class PatientController {
 
     private final PatientService patientService;
     private final DoctorService doctorService;
+    private final AppointmentService appointmentService;
 
     @Autowired
-    public PatientController(PatientService patientService, DoctorService doctorService) {
+    public PatientController(PatientService patientService, DoctorService doctorService , AppointmentService appointmentService) {
+        this.appointmentService=appointmentService;
         this.patientService = patientService;
         this.doctorService = doctorService;
     }
@@ -66,5 +70,12 @@ public class PatientController {
    //  @PreAuthorize("hasRole('ADMIN')")
     public Patient updatePatientById(@PathVariable Long id, @RequestBody Patient patient) {
         return patientService.updatePatientById(id, patient);
+    }
+
+    // Find all the appointments of a patient
+
+    @GetMapping("/{id}/appointments")
+    public List<Appointment> getAppointmentsByPatientId(@PathVariable Long id) {
+        return appointmentService.getAppointmentByPatientId(id);
     }
 }
