@@ -28,6 +28,14 @@
     <td mat-cell *matCellDef="let element"> {{element.specialite}} </td>
   </ng-container>
 
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button (click)="viewPatients(element.id)">View Doctors</button>
+      </td>
+    </ng-container>
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
@@ -35,4 +43,13 @@
                  showFirstLastButtons
   >
   </mat-paginator>
+  <!-- Display patients -->
+  <div *ngIf="selectedDoctorPatients && selectedDoctorPatients.length > 0">
+    <h3>Patients for Selected Doctors</h3>
+    <ul>
+      <li *ngFor="let patient of selectedDoctorPatients">
+        name : {{ patient.nom }} / date de naissance : {{ patient.dateNaissane }}
+      </li>
+    </ul>
+  </div>
 </div>

@@ -3,6 +3,13 @@ import {HttpClient} from '@angular/common/http';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 
+interface Appointment{
+  id: number;
+  title : string;
+  description : string;
+  date : Date;
+}
+
 @Component({
   selector: 'app-patient',
   templateUrl: './patient.component.html',
@@ -14,8 +21,8 @@ export class PatientComponent implements OnInit {
   }
   public patients:any;
   public dataSource: any;
-  public displayedColumns:string[] = ['id','nom','dateNaissane','malade','score'];
-
+  public displayedColumns:string[] = ['id','nom','dateNaissane','malade','score','actions'];
+  public selectedPatientAppointments : Appointment[] = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit() {
@@ -33,4 +40,17 @@ export class PatientComponent implements OnInit {
     )
   }
 
+  viewAppointments(patientId:number) {
+    this.http.get<Appointment[]>(`http://localhost:8080/patients/${patientId}/appointments`).subscribe(
+      {
+        next: appointments => {
+          this.selectedPatientAppointments = appointments;
+        },
+        error: err => {
+          console.error('Failed to fetch doctors:', err);
+        }
+      }
+    );
+
+  }
 }
