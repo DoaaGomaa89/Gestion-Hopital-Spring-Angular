@@ -25,13 +25,9 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // CSRF protection for production can be configured here
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/hospitals","/doctors","/patients","/appointments").permitAll()
-                        // i'll remove the security config to show the data on the tables in the frontend
-                        // .requestMatchers("/patients/showall").hasRole("USER")
-                        // .requestMatchers("/patients/delete/**", "/patients/update/**","/Appointment").hasRole("ADMIN")
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll() // Allows all requests without authentication
                 )
-                .httpBasic(withDefaults()); // enables basic authentication
+                .httpBasic(withDefaults()); // Enables basic authentication (optional for development)
 
         return http.build();
     }
