@@ -1,63 +1,71 @@
-# 🏥 Hospital Management Backend Application
+# 🏥 Hospital Management Application
 
-Welcome to the **Hospital Management Backend Application**—an advanced, secure backend system built with **Spring Boot**, designed to manage and simplify complex relationships within a healthcare environment. This application models interactions between entities like **Hospitals**, **Doctors**, **Patients**, and **Appointments**. With robust data handling and secure, role-based access, it’s optimized for seamless integration with frontend applications or other healthcare systems.
+Welcome to the **Hospital Management Application**—a comprehensive, secure system with both **Spring Boot** backend and **Angular** frontend. This application is tailored for managing complex relationships within a healthcare environment, facilitating interactions between **Hospitals**, **Doctors**, **Patients**, and **Appointments**. Equipped with secure, role-based access and a user-friendly interface, it provides seamless healthcare management and integration capabilities.
 
 ---
 
 ## 🌟 Key Features
 
-- **Entity Relationship Modeling**: Efficiently manage relationships between hospitals, doctors, patients, and their appointments.
-- **Role-Based Security**: Protect sensitive data with role-based permissions using JWT and Keycloak, ensuring secure API access.
-- **Comprehensive CRUD Operations**: Perform Create, Read, Update, and Delete actions on all entities for seamless data management.
-- **Data Persistence**: Uses **JPA** to reliably store and retrieve data.
-- **API-Ready Design**: Ready for frontend or system integration with detailed endpoints for all entities.
+- **Entity Relationship Modeling**: Manage relationships between hospitals, doctors, patients, and appointments with ease.
+- **Role-Based Security**: Protect data through role-based permissions, JWT, and Keycloak, ensuring secure API and frontend access.
+- **Comprehensive CRUD Operations**: Effortlessly perform Create, Read, Update, and Delete actions on all entities.
+- **Data Persistence**: Uses **JPA** for consistent data storage and retrieval.
+- **API and Frontend Ready**: Optimized for frontend interactions and integration with detailed endpoints and user interfaces.
 
 ---
 
 ## 🚀 Getting Started
 
-1. **Clone the Repository**: Clone this repository to your local machine.
-   ```bash
-   git clone https://github.com/aminebkk/hospital-management-backend.git
-
-## 🛠️ Project Structure
-
-- **Controllers**: Manages API requests and responses for each entity.
-- **Services**: Contains business logic for handling operations.
-- **Repositories**: Uses JPA repositories for database interactions.
-- **Security Configuration**: Role-based security implemented with **JWT** and **Keycloak** for endpoint protection.
+1. **Clone the Repositories**:
+   - Backend: `git clone https://github.com/aminebkk/hospital-management-backend.git`
+   - Frontend: `git clone https://github.com/aminebkk/hospital-management-frontend.git`
+   
+2. **Set up the Backend and Frontend**: Follow instructions in each repository’s README for setting up locally.
 
 ---
 
-## 📚 API Documentation
+## 🛠️ Project Structure
 
-The API is designed with REST principles and supports all CRUD operations on entities such as **Hospitals**, **Doctors**, **Patients**, and **Appointments**. See the **API documentation** for details on endpoints, parameters, and JSON response structures.
+### Backend
+- **Controllers**: Handles API requests and responses for each entity.
+- **Services**: Contains the logic for managing entities.
+- **Repositories**: Utilizes JPA repositories for database interactions.
+- **Security Configuration**: JWT and Keycloak role-based security for endpoint protection.
+
+### Frontend (Angular)
+- **Components**: Modular Angular components for each feature.
+- **Services**: Handles API interactions between frontend and backend.
+- **Routing**: Smooth navigation between features like hospitals, doctors, and appointments.
+- **Styling**: Modern UI elements with Angular Material for a clean look.
+
+---
+
+## 📚 API and UI Documentation
+
+Both the backend API and frontend interface support CRUD operations on **Hospitals**, **Doctors**, **Patients**, and **Appointments**. See the **API documentation** for backend endpoint details, and explore the intuitive Angular interface to manage data seamlessly.
 
 ---
 
 ## 🔧 Technologies Used
 
-- **Spring Boot**
-- **Spring Security** with OAuth2 and Keycloak integration
-- **JPA / Hibernate** for ORM
-- **MySQL** database
-- **JWT** for token-based authentication
+- **Backend**: Spring Boot, Spring Security (OAuth2, Keycloak), JPA/Hibernate, MySQL, JWT
+- **Frontend**: Angular, Angular Material, TypeScript, JWT-based Authentication
 
 ---
 
 ## 🤝 Contributions
 
-Contributions are encouraged! If you'd like to contribute:
+Contributions are welcome! To contribute:
 
-1. **Fork** the repository.
+1. **Fork** the repositories.
 2. **Create a new branch** for your feature.
 3. **Submit a pull request**.
 
-
+---
 
 ## 📖 JSON Response Example
 
-The following JSON illustrates the nested structure for retrieving hospitals, complete with doctors, patients, and appointments. This structure is ideal for frontends needing complex healthcare data:
+The following JSON response shows the nested structure for retrieving hospitals, along with associated doctors, patients, and appointments. This is designed for both backend data processing and frontend UI rendering.
 
 ```json
 [
@@ -85,43 +93,6 @@ The following JSON illustrates the nested structure for retrieving hospitals, co
                                 "title": "Follow-up Appointment",
                                 "description": "Ask the Doctor",
                                 "date": "2024-11-05"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": 2,
-        "name": "el Farabi",
-        "location": "Oujda City",
-        "capacity": 200,
-        "doctors": [
-            {
-                "id": 2,
-                "nom": "Dr Boushaba",
-                "dateNaissane": "2001-02-02",
-                "specialite": "Generalist",
-                "patients": [
-                    {
-                        "id": 2,
-                        "nom": "Tariq",
-                        "dateNaissane": "1990-01-01",
-                        "malade": true,
-                        "score": 75,
-                        "appointments": [
-                            {
-                                "id": 2,
-                                "title": "Follow-up Appointment",
-                                "description": "Talk with the doctor About a Fever",
-                                "date": "2024-12-05"
-                            },
-                            {
-                                "id": 52,
-                                "title": "Follow-up Appointment",
-                                "description": "Take an advice from the doctor",
-                                "date": "2024-12-06"
                             }
                         ]
                     }
