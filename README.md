@@ -16,9 +16,9 @@ Welcome to the **Hospital Management Application**—a comprehensive, secure sys
 
 ## 🚀 Getting Started
 
-1. **Clone the Repositories**:
-   - Backend: `git clone https://github.com/aminebkk/hospital-management-backend.git`
-   - Frontend: `git clone https://github.com/aminebkk/hospital-management-frontend.git`
+1. **Clone the Repositorie**:
+   - Application : `git clone https://github.com/aminebkk/Gestion-Hospital-Spring-Angular.git`
+
    
 2. **Set up the Backend and Frontend**: Follow instructions in each repository’s README for setting up locally.
 
