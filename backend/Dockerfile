@@ -1,20 +1,15 @@
-# ---------- build stage ----------
+# syntax=docker/dockerfile:1
 FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
+COPY pom.xml .
+RUN --mount=type=cache,target=/root/.m2 mvn -B -U -DskipTests dependency:go-offline
+COPY src ./src
+RUN --mount=type=cache,target=/root/.m2 mvn -B -DskipTests package
 
-# Copy only backend first to leverage Docker cache
-COPY backend/pom.xml ./pom.xml
-RUN --mount=type=cache,target=/root/.m2 mvn -B -U -DskipTests verify || true
-
-# Now copy the full backend sources and build
-COPY backend/ .
-RUN --mount=type=cache,target=/root/.m2 mvn -B -U -DskipTests package
-
-# ---------- runtime stage ----------
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
-COPY --from=build /app/target/*-SNAPSHOT.jar app.jar
-
-# Let docker-compose set SPRING_* envs
+ARG JAR_FILE=/app/target/*.jar
+COPY --from=build ${JAR_FILE} /app/app.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/app/app.jar"]
+ENV JAVA_OPTS=""
+ENTRYPOINT ["sh","-c","java $JAVA_OPTS -jar /app/app.jar"]
